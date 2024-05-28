@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	url := "https://rosstat.gov.ru/uslugi" // Замените на URL вашей страницы
+	url := "https://rosstat.gov.ru/uslugi"
 
 	resp, err := http.Get(url)
 	if err != nil {
@@ -29,10 +29,8 @@ func main() {
 		return
 	}
 
-	// Шаблон для поиска 6 последовательных цифр
 	re := regexp.MustCompile(`\d{6}`)
 
-	// Поиск подстроки в URL, соответствующей шаблону
 	var findLinks func(*html.Node)
 	findLinks = func(n *html.Node) {
 		if n.Type == html.ElementNode && n.Data == "a" {
